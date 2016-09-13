@@ -190,6 +190,7 @@ public class InitSingleStdCar {
 			Assert.assertEquals(16,  car.getAmountOfFuel());
 			//testing == 8 adds + 4
 			car.setAmountOfFuel(8);
+			car.incrementFuelTank();
 			Assert.assertEquals(12,  car.getAmountOfFuel());
 			car.incrementFuelTank();
 			Assert.assertEquals(16,  car.getAmountOfFuel());
