@@ -1,5 +1,7 @@
 package io.pivotal.carOBDdatagen.car;
 
+import java.util.Random;
+
 public class StdCar {
 	
 	private int amountOfFuel;
@@ -27,12 +29,15 @@ public class StdCar {
 	private float rearRightPsi;
 	private String make;
 	private String model;
+	private String vin;
 	private int year;
+	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
 	public StdCar (String make, String model , int year) {
 		this.make = make;
 		this.model = model;
 		this.year = year;
+		this.vin = randomString(17);
 	}
 
 	public int getAmountOfFuel() {
@@ -81,6 +86,14 @@ public class StdCar {
 
 	public void setCurrentRpm(int currentRpm) {
 		this.currentRpm = currentRpm;
+	}
+
+	public String getVin() {
+		return vin;
+	}
+
+	public void setVin(String vin) {
+		this.vin = vin;
 	}
 
 	public int getEbrake() {
@@ -231,6 +244,14 @@ public class StdCar {
 			currentRpm--;
 	}
 	
+	public String randomString( int len ) 
+	{
+		Random rnd = new Random();
+		StringBuilder sb = new StringBuilder( len );
+		for( int i = 0; i < len; i++ ) 
+			sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+		return sb.toString();
+	}
 	
 	
 }
