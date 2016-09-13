@@ -188,8 +188,15 @@ public class StdCar {
 
 
 	public void incrementFuelTank() {
-		if (this.amountOfFuel < 15 )
-			this.amountOfFuel++;
+		//This is a full tank refuel action or additional 4 gallons
+		if (this.amountOfFuel >= 12 )
+			this.amountOfFuel=16;
+		else if (this.amountOfFuel <= 8)
+			this.amountOfFuel+=4;
+		else if (this.amountOfFuel > 8 && this.amountOfFuel < 12)
+			this.amountOfFuel+=4;
+		else if (this.amountOfFuel == 16)
+			this.amountOfFuel=16;
 	}
 
 	public void decrementFuelTank() {
