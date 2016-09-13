@@ -202,7 +202,7 @@ public class StdCar {
 
 	public void decrementFuelTank() {
 		if (this.amountOfFuel > 0)
-			this.setAmountOfFuel(this.amountOfFuel--);
+			this.amountOfFuel--;
 	}
 	
 	public void incrementCurrentMileage() {
