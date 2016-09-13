@@ -12,10 +12,12 @@ public class InitSingleStdCar {
 		try {
 			StdCar car = new StdCar("Honda", "Accord EX", Integer.parseInt("2007"));
 			Assert.assertEquals("Honda", car.getMake());
-			Assert.assertEquals("Accord", car.getModel());
+			Assert.assertEquals("Accord EX", car.getModel());
 			Assert.assertEquals(2007, car.getYear());
+			Assert.assertTrue("Vin: " + car.getVin(),car.getVin()!="");
 		} catch (Exception e) {
 			//Pass
+			
 		}
 		
 	}
