@@ -84,6 +84,7 @@ public class InitSingleStdCar {
 	
 	@Test
 	public void testChangeSpeed() throws Exception {
+		//changing rpms is tested here so no need for a seperate test
 		try {
 			StdCar car = new StdCar("Honda", "Civic EX", Integer.parseInt("2010"));
 			Assert.assertEquals(0,  car.getCurrentMileage());
@@ -97,7 +98,8 @@ public class InitSingleStdCar {
 			car.setCurrentRpm(4);
 			car.accelerate();
 			car.accelerate();
-			// testing Decelerate
+			// testing Decelerate test 
+			//Making Sure Mileage still goes up
 			Assert.assertEquals(3,  car.getCurrentMileage());
 			car.decelerate();
 			Assert.assertEquals(37,  car.getCurrentSpeed());
