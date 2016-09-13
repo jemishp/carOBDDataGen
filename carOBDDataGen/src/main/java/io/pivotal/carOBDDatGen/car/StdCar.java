@@ -203,8 +203,8 @@ public class StdCar {
 	}
 	
 	public void decrementCurrentMileage() {
-		if ( this.currentMileage > 25 )
-			this.currentMileage--;
+		//if ( this.currentMileage > 25 )
+			//this.currentMileage--;
 	}
 	
 
