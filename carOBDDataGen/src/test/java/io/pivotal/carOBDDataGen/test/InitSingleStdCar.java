@@ -172,15 +172,31 @@ public class InitSingleStdCar {
 			logger.debug("Exception oeccured", e);
 			}
 		} 
-	@Ignore
+	
 	@Test
 	public void testChangeFuel() throws Exception {
 		try {
 			StdCar car = new StdCar("Honda", "Civic", Integer.parseInt("2010"));
-			Assert.assertEquals(0,  car.getCurrentGear());
-			Assert.assertEquals(0,  car.getCurrentMileage());
-			Assert.assertEquals(0,  car.getCurrentRpm());
-			Assert.assertEquals(0, car.getCurrentSpeed());
+			//testing > 8 but less than 12
+			car.setAmountOfFuel(10);
+			car.incrementFuelTank();
+			Assert.assertEquals(14,  car.getAmountOfFuel());
+			car.decrementFuelTank();
+			Assert.assertEquals(13,  car.getAmountOfFuel());
+			car.decrementFuelTank();
+			Assert.assertEquals(12,  car.getAmountOfFuel());
+			//testing == 12 refills a full tank
+			car.incrementFuelTank();
+			Assert.assertEquals(16,  car.getAmountOfFuel());
+			//testing == 8 adds + 4
+			car.setAmountOfFuel(8);
+			Assert.assertEquals(12,  car.getAmountOfFuel());
+			car.incrementFuelTank();
+			Assert.assertEquals(16,  car.getAmountOfFuel());
+			//Should stay at 16
+			car.incrementFuelTank();
+			Assert.assertEquals(16,  car.getAmountOfFuel());
+
 		} catch (Exception e) {
 			//pass
 			logger.debug("Exception oeccured", e);
