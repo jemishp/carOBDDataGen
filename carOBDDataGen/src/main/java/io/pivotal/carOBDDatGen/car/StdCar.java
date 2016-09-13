@@ -211,7 +211,7 @@ public class StdCar {
 	public void incrementCurrentGear() {
 		if ( this.currentGear == 0)
 			this.currentGear++;
-		if ( this.currentGear < 5 )
+		else if ( this.currentGear < 5 )
 			this.currentGear++;
 	}
 	
@@ -237,13 +237,15 @@ public class StdCar {
 	public void accelerate() {
 		if (currentSpeed < 135  && currentRpm < 8 )
 			currentSpeed++;
-		    currentRpm++;			
+		    currentRpm++;
+		    currentMileage++;
 	}
 	
 	public void decelerate(){
 		if (currentSpeed > 0 && currentRpm > 1 )
 			currentSpeed--;
 			currentRpm--;
+			currentMileage++;
 	}
 	
 	public String randomString( int len ) 
