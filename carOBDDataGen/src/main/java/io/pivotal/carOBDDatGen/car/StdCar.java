@@ -40,6 +40,7 @@ public class StdCar {
 		this.model = model;
 		this.year = year;
 		this.vin = randomString(17);
+		this.tankCapacity = 16;
 	}
 
 	public int getAmountOfFuel() {
@@ -190,18 +191,18 @@ public class StdCar {
 	public void incrementFuelTank() {
 		//This is a full tank refuel action or additional 4 gallons
 		if (this.amountOfFuel >= 12 )
-			this.amountOfFuel=16;
+			this.setAmountOfFuel(this.getTankCapacity());
 		else if (this.amountOfFuel <= 8)
-			this.amountOfFuel+=4;
+			this.setAmountOfFuel(this.amountOfFuel+=4);
 		else if (this.amountOfFuel > 8 && this.amountOfFuel < 12)
-			this.amountOfFuel+=4;
+			this.setAmountOfFuel(this.amountOfFuel+=4);
 		else if (this.amountOfFuel == 16)
-			this.amountOfFuel=16;
+			this.setAmountOfFuel(this.getTankCapacity());
 	}
 
 	public void decrementFuelTank() {
 		if (this.amountOfFuel > 0)
-			this.amountOfFuel--;
+			this.setAmountOfFuel(this.amountOfFuel--);
 	}
 	
 	public void incrementCurrentMileage() {
