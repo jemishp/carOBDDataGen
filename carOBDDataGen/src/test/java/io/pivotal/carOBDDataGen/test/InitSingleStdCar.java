@@ -157,15 +157,16 @@ public class InitSingleStdCar {
 			}
 		}
 	
-	@Ignore
+	
 	@Test
-	public void testChangeMileage() throws Exception {
+	public void testDecrementMileage() throws Exception {
+		//ChengeSpeed and max Speed already test incrementing Mileage
+		//This case tests that Mileage can not be decremented
 		try {
 			StdCar car = new StdCar("Honda", "Civic", Integer.parseInt("2010"));
-			Assert.assertEquals(0,  car.getCurrentGear());
-			Assert.assertEquals(0,  car.getCurrentMileage());
-			Assert.assertEquals(0,  car.getCurrentRpm());
-			Assert.assertEquals(0, car.getCurrentSpeed());
+			car.setCurrentMileage(10000);
+			car.decrementCurrentMileage();
+			Assert.assertEquals(10000,  car.getCurrentMileage());
 		} catch (Exception e) {
 			//pass
 			logger.debug("Exception oeccured", e);
