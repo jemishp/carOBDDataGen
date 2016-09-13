@@ -73,9 +73,25 @@ public class InitSingleStdCar {
 			//Checking that it stays at 5
 			car.incrementCurrentGear();
 			Assert.assertEquals(5,  car.getCurrentGear());
+			//Checking that gears decrement fine
+			car.decrementCurrentGear();
+			Assert.assertEquals(4,  car.getCurrentGear());
+			car.decrementCurrentGear();
+			Assert.assertEquals(3,  car.getCurrentGear());
+			car.decrementCurrentGear();
+			Assert.assertEquals(2,  car.getCurrentGear());
+			car.decrementCurrentGear();
+			Assert.assertEquals(1,  car.getCurrentGear());
+			car.decrementCurrentGear();
+			Assert.assertEquals(0,  car.getCurrentGear());
+			//Checking that it stays at 0
+			car.decrementCurrentGear();
+			Assert.assertEquals(0,  car.getCurrentGear());
 			//Check case for reverse
 			car.putInReverse();
 			Assert.assertEquals(10,  car.getCurrentGear());
+			car.getOutOfReverse();
+			Assert.assertEquals(1,  car.getCurrentGear());
 		} catch (Exception e) {
 		//pass
 		logger.debug("Exception oeccured", e);
@@ -102,7 +118,8 @@ public class InitSingleStdCar {
 			//Making Sure Mileage still goes up
 			Assert.assertEquals(3,  car.getCurrentMileage());
 			car.decelerate();
-			Assert.assertEquals(37,  car.getCurrentSpeed());
+			Assert.assertNotEquals(37,  car.getCurrentSpeed());
+			Assert.assertEquals(36,  car.getCurrentSpeed());
 			Assert.assertEquals(5, car.getCurrentRpm());
 			Assert.assertEquals(4,  car.getCurrentMileage());
 			
@@ -112,15 +129,28 @@ public class InitSingleStdCar {
 			logger.debug("Exception oeccured", e);
 			}
 		}
-	@Ignore
+
 	@Test
-	public void testChangeRpm() throws Exception {
+	public void testMaxSpeed() throws Exception {
 		try {
 			StdCar car = new StdCar("Honda", "Civic", Integer.parseInt("2010"));
-			Assert.assertEquals(0,  car.getCurrentGear());
-			Assert.assertEquals(0,  car.getCurrentMileage());
-			Assert.assertEquals(0,  car.getCurrentRpm());
-			Assert.assertEquals(0, car.getCurrentSpeed());
+			car.setCurrentRpm(7);
+			car.setCurrentSpeed(134);
+			car.setCurrentMileage(88000);
+			car.accelerate();
+			Assert.assertEquals(135,  car.getCurrentSpeed());
+			Assert.assertEquals(88001,  car.getCurrentMileage());
+			Assert.assertEquals(8,  car.getCurrentRpm());
+			//test that mileage increases but speed and rpm do not increase as they are at max
+			car.accelerate();
+			Assert.assertEquals(135,  car.getCurrentSpeed());
+			Assert.assertEquals(88002,  car.getCurrentMileage());
+			Assert.assertEquals(8,  car.getCurrentRpm());
+			car.accelerate();
+			Assert.assertEquals(135,  car.getCurrentSpeed());
+			Assert.assertEquals(88003,  car.getCurrentMileage());
+			Assert.assertEquals(8,  car.getCurrentRpm());
+
 		} catch (Exception e) {
 			//pass
 			logger.debug("Exception oeccured", e);
