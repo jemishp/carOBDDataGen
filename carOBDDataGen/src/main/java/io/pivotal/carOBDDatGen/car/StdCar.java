@@ -235,10 +235,12 @@ public class StdCar {
 	}
 	
 	public void accelerate() {
-		if (currentSpeed < 135  && currentRpm < 8 )
-			currentSpeed++;
-		    currentRpm++;
-		    currentMileage++;
+		if ( this.currentSpeed < 135  && this.currentRpm < 8 ) {
+			this.currentSpeed++;
+		    this.currentRpm++;
+		    this.currentMileage++;
+		} else if ( this.currentSpeed == 135 || this.currentRpm == 8)
+			this.currentMileage++;
 	}
 	
 	public void decelerate(){
