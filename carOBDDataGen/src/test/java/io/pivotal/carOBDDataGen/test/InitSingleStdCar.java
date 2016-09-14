@@ -208,8 +208,11 @@ public class InitSingleStdCar {
 	public void testRandomYear() throws Exception {
 		try {
 			MakeModelYear m = new MakeModelYear();
-			int a = m.getRandomYear();
-			Assert.assertNotEquals(a, m.getYear());
+			Assert.assertTrue(2000 <= m.getYear() && m.getYear() <= 2016);
+			logger.debug(m.toString());
+			MakeModelYear a = new MakeModelYear();
+			Assert.assertTrue(2000 <= a.getYear() && a.getYear() <= 2016);
+			logger.debug(a.toString());
 		} catch (Exception e) {
 			//pass
 			logger.debug("Exception Occured: " , e );

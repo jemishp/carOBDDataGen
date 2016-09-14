@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
+import com.google.gson.Gson;
+
 public class MakeModelYear {
 	
 	private int year;
@@ -32,5 +34,11 @@ public class MakeModelYear {
 		Calendar c = new GregorianCalendar(2000+random.nextInt(16),1,1);
 		return setYear(c.get(Calendar.YEAR));
 		 
+	}
+	
+	public String toString() {
+		Gson gson = new Gson();
+		String result = gson.toJson(this);
+		return result;
 	}
 }
