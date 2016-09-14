@@ -27,10 +27,11 @@ public class InitSingleStdCar {
 	public void testInitCar() throws Exception {
 		try {
 			StdCar car = new StdCar();
-			Assert.assertEquals("Honda", car.getMake());
-			Assert.assertEquals("Accord EX", car.getModel());
-			Assert.assertEquals(2007, car.getYear());
-			Assert.assertTrue("Vin: " + car.getVin(),car.getVin()!="");
+			Assert.assertNotNull(car.getMake());
+			Assert.assertNotNull(car.getModel());
+			Assert.assertNotNull(car.getYear());
+			Assert.assertNotNull(car.getVin());
+			Assert.assertNotNull(car.getTankCapacity());
 			logger.debug((car.toString()));
 		} catch (Exception e) {
 			//fails
