@@ -215,10 +215,10 @@ public class InitSingleStdCar {
 	public void testYearInRange() throws Exception {
 		try {
 			StdCar car = new StdCar();
-			Assert.assertTrue(2000 <= car.getYear() && car.getYear() <= 2016);
+			Assert.assertTrue(2010 <= car.getYear() && car.getYear() <= 2016);
 			logger.debug(car.toString());
 			StdCar car2 = new StdCar();
-			Assert.assertTrue(2000 <= car2.getYear() && car2.getYear() <= 2016);
+			Assert.assertTrue(2010 <= car2.getYear() && car2.getYear() <= 2016);
 			logger.debug(car2.toString());
 		} catch (Exception e) {
 			//fails

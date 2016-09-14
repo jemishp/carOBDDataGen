@@ -20,6 +20,7 @@ public class MultiCar {
 			List<StdCar> carList = new ArrayList<StdCar>() ;
 			Random rnd = new Random();
 			int a = rnd.nextInt(100);
+			logger.debug("Will generate " + a + " StdCar Objects");
 			for (int i=0; i<a; i++) {
 				StdCar car = new StdCar();
 				carList.add(car);
