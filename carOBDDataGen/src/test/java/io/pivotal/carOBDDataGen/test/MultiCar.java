@@ -9,10 +9,12 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
+import io.pivotal.carOBDDatGen.car.OldCar;
 import io.pivotal.carOBDDatGen.car.StdCar;
 
 public class MultiCar {
 	static final Logger logger = LogManager.getLogger(InitSingleStdCar.class);
+	
 	
 	@Test
 	public void testInitCars() throws Exception {
@@ -25,13 +27,17 @@ public class MultiCar {
 				StdCar car = new StdCar();
 				carList.add(car);
 				logger.debug((car.toString()));
-				Assert.assertNotNull(car.getMake());
-				Assert.assertNotNull(car.getModel());
-				Assert.assertNotNull(car.getYear());
-				Assert.assertNotNull(car.getVin());
-				Assert.assertNotNull(car.getTankCapacity());
 			}
 			Assert.assertEquals(a, carList.size());
+			int c = rnd.nextInt(200);
+			logger.debug("Will generate " + a + " OldCar Objects");
+			for (int b=0; b<c; b++) {
+				OldCar oCar = new OldCar();
+				carList.add(oCar);
+				logger.debug((oCar.toString()));
+
+			}
+			Assert.assertEquals(a+c, carList.size());
 
 		} catch (Exception e) {
 			//fails
