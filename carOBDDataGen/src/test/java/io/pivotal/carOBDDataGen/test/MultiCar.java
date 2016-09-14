@@ -14,12 +14,25 @@ import io.pivotal.carOBDDatGen.car.StdCar;
 
 public class MultiCar {
 	static final Logger logger = LogManager.getLogger(InitSingleStdCar.class);
+	List<StdCar> carList = new ArrayList<StdCar>() ;
 	
+	
+	@Test
+	public void testAccessingCarList() throws Exception {
+		try {
+			logger.debug("list Size is: " + carList.size());
+			
+		} catch (Exception e) {
+			//fails
+			logger.debug("Exception Occured: " , e );
+			Assert.fail("Exception Occured: " +  e.toString());			
+		}
+	}
 	
 	@Test
 	public void testInitCars() throws Exception {
 		try {
-			List<StdCar> carList = new ArrayList<StdCar>() ;
+			//List<StdCar> carList = new ArrayList<StdCar>() ;
 			Random rnd = new Random();
 			int a = rnd.nextInt(100);
 			logger.debug("Will generate " + a + " StdCar Objects");
@@ -46,5 +59,7 @@ public class MultiCar {
 		}			
 		
 	}
+	
+
 
 }
