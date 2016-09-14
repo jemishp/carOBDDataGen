@@ -27,9 +27,10 @@ public class InitSingleOldCar {
 	public void testInitOldCar() throws Exception {
 		try {
 			OldCar oCar = new OldCar();
-			Assert.assertFalse("Not an old Car!", oCar.getCurrentMileage()<=60000);
-			Assert.assertEquals(12, oCar.getTankCapacity());
 			logger.debug(oCar.toString());
+			Assert.assertFalse("Not an old Car based on its Mileage!: " + oCar.getCurrentMileage(), oCar.getCurrentMileage()<=60000);
+			Assert.assertEquals(12, oCar.getTankCapacity());
+			Assert.assertTrue("Not an old Car based on its Years!: " + oCar.getYear(), 2000 <= oCar.getYear() && oCar.getYear() <= 2009);
 		} catch (Exception e) {
 			//fails
 			logger.debug("Exception Occured: " , e );
