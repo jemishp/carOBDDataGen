@@ -233,8 +233,14 @@ public class InitSingleStdCar {
 			logger.debug(car.toString());
 			StdCar car2 = new StdCar();
 			logger.debug(car2.toString());
-			Assert.assertNotEquals(car.getMake(), car2.getMake());
-			Assert.assertNotEquals(car.getModel() , car2.getModel());
+			if (car2.getMake().equals(car.getMake())){
+				Assert.assertNotEquals(car.getModel() , car2.getModel());
+			} else if (car2.getModel().equals(car.getModel())) {
+				Assert.assertNotEquals(car.getMake(), car2.getMake());			
+			} else {
+				Assert.assertNotEquals(car.getMake(), car2.getMake());
+				Assert.assertNotEquals(car.getModel() , car2.getModel());
+			}
 			
 		} catch (Exception e) {
 			//fails
