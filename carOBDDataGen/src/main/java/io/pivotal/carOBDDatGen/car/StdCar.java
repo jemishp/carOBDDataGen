@@ -276,6 +276,11 @@ public class StdCar {
 		 
 	}
 	
+	public String getRandomMakeModel() {
+		
+		return "test";
+	}
+	
 	public String toString() {
 		Gson gson = new Gson();
 		String result = gson.toJson(this);

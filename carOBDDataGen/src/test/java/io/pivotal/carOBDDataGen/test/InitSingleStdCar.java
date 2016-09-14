@@ -218,4 +218,19 @@ public class InitSingleStdCar {
 			logger.debug("Exception Occured: " , e );
 		}
 	}
+	
+	@Test
+	public void testRandomMakeModel() throws Exception {
+		try {
+			StdCar car = new StdCar("Volvo","XC90");
+			Assert.assertTrue(2000 <= car.getYear() && car.getYear() <= 2016);
+			logger.debug(car.toString());
+			StdCar car2 = new StdCar("Volvo","XC90");
+			Assert.assertTrue(2000 <= car2.getYear() && car2.getYear() <= 2016);
+			logger.debug(car2.toString());
+		} catch (Exception e) {
+			//pass
+			logger.debug("Exception Occured: " , e );
+		}
+	}
 }
