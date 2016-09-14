@@ -223,11 +223,12 @@ public class InitSingleStdCar {
 	public void testRandomMakeModel() throws Exception {
 		try {
 			StdCar car = new StdCar("Volvo","XC90");
-			Assert.assertTrue(2000 <= car.getYear() && car.getYear() <= 2016);
 			logger.debug(car.toString());
-			StdCar car2 = new StdCar("Volvo","XC90");
-			Assert.assertTrue(2000 <= car2.getYear() && car2.getYear() <= 2016);
+			StdCar car2 = new StdCar("Volvo","XC60");
 			logger.debug(car2.toString());
+			Assert.assertNotEquals(car.getMake(), car2.getMake());
+			Assert.assertNotEquals(car.getModel() , car2.getModel());
+			
 		} catch (Exception e) {
 			//pass
 			logger.debug("Exception Occured: " , e );
