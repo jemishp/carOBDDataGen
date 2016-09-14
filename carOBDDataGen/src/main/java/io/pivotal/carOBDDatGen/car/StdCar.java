@@ -269,12 +269,6 @@ public class StdCar {
 		return sb.toString();
 	}
 	
-	public int randomYear(){
-		Random random = new Random();
-		Calendar c = new GregorianCalendar(2000+random.nextInt(16),1,1);
-		return year = c.get(Calendar.YEAR);
-		 
-	}
 	
 	public String toString() {
 		Gson gson = new Gson();
