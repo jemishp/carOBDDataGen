@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.pivotal.carOBDDatGen.car.MakeModelYear;
 import io.pivotal.carOBDDatGen.car.StdCar;
 
 
@@ -206,7 +207,9 @@ public class InitSingleStdCar {
 	@Test
 	public void testRandomYear() throws Exception {
 		try {
-			
+			MakeModelYear m = new MakeModelYear();
+			int a = m.getRandomYear();
+			Assert.assertNotEquals(a, m.getYear());
 		} catch (Exception e) {
 			//pass
 			logger.debug("Exception Occured: " , e );
