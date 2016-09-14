@@ -229,8 +229,10 @@ public class InitSingleStdCar {
 			Assert.assertNotEquals(car.getModel() , car2.getModel());
 			
 		} catch (Exception e) {
-			//pass
+			//fails
 			logger.debug("Exception Occured: " , e );
+			Assert.fail("Exception Occured: " +  e.toString());
+			
 		}
 	}
 }
