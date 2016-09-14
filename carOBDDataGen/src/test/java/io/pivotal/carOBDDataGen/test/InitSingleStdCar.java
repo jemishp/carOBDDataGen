@@ -34,7 +34,7 @@ public class InitSingleStdCar {
 			logger.debug((car.toString()));
 		} catch (Exception e) {
 			//Pass
-			logger.debug("Exception Occured", e);
+			logger.debug("Exception Occured: ", e);
 		}			
 		
 	}
@@ -49,7 +49,7 @@ public class InitSingleStdCar {
 			Assert.assertEquals(0,car.getCurrentGear());
 		} catch (Exception e) {
 			//Pass
-			logger.debug("Exception Occured", e);
+			logger.debug("Exception Occured: ", e);
 		}
 	}
 	
@@ -93,7 +93,7 @@ public class InitSingleStdCar {
 			Assert.assertEquals(1,  car.getCurrentGear());
 		} catch (Exception e) {
 		//pass
-		logger.debug("Exception oeccured", e);
+		logger.debug("Exception Occured: ", e);
 		}
 	}	
 	
@@ -125,7 +125,7 @@ public class InitSingleStdCar {
 			
 		}catch (Exception e) {
 			//pass
-			logger.debug("Exception oeccured", e);
+			logger.debug("Exception Occured: ", e);
 			}
 		}
 
@@ -152,7 +152,7 @@ public class InitSingleStdCar {
 
 		} catch (Exception e) {
 			//pass
-			logger.debug("Exception oeccured", e);
+			logger.debug("Exception Occured: ", e);
 			}
 		}
 	
@@ -168,7 +168,7 @@ public class InitSingleStdCar {
 			Assert.assertEquals(10000,  car.getCurrentMileage());
 		} catch (Exception e) {
 			//pass
-			logger.debug("Exception oeccured", e);
+			logger.debug("Exception Occured: ", e);
 			}
 		} 
 	
@@ -199,7 +199,17 @@ public class InitSingleStdCar {
 
 		} catch (Exception e) {
 			//pass
-			logger.debug("Exception oeccured", e);
+			logger.debug("Exception Occured: ", e);
 			}
 		}
+	
+	@Test
+	public void testRandomYear() throws Exception {
+		try {
+			
+		} catch (Exception e) {
+			//pass
+			logger.debug("Exception Occured: " , e );
+		}
+	}
 }
