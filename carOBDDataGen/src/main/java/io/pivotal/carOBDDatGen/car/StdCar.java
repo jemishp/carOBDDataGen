@@ -37,10 +37,10 @@ public class StdCar {
 	private int year;
 	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
-	public StdCar (String make, String model , int year) {
+	public StdCar (String make, String model) {
 		this.make = make;
 		this.model = model;
-		this.year = year;
+		this.year = getRandomYear();
 		this.vin = randomString(17);
 		this.tankCapacity = 16;
 	}
@@ -269,6 +269,12 @@ public class StdCar {
 		return sb.toString();
 	}
 	
+	public int getRandomYear(){
+		Random random = new Random();
+		Calendar c = new GregorianCalendar(2000+random.nextInt(16),1,1);
+		return c.get(Calendar.YEAR);
+		 
+	}
 	
 	public String toString() {
 		Gson gson = new Gson();

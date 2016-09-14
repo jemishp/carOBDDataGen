@@ -25,7 +25,7 @@ public class InitSingleOldCar {
 	
 	@Test
 	public void testInitOldCar() throws Exception {
-		OldCar oCar = new OldCar("Acura", "MDX" , Integer.parseInt("2000"));
+		OldCar oCar = new OldCar("Acura", "MDX");
 		Assert.assertFalse("Not an old Car!", oCar.getCurrentMileage()<=60000);
 		Assert.assertEquals(12, oCar.getTankCapacity());
 		logger.debug(oCar.toString());
