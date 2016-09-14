@@ -25,10 +25,16 @@ public class InitSingleOldCar {
 	
 	@Test
 	public void testInitOldCar() throws Exception {
-		OldCar oCar = new OldCar();
-		Assert.assertFalse("Not an old Car!", oCar.getCurrentMileage()<=60000);
-		Assert.assertEquals(12, oCar.getTankCapacity());
-		logger.debug(oCar.toString());
+		try {
+			OldCar oCar = new OldCar();
+			Assert.assertFalse("Not an old Car!", oCar.getCurrentMileage()<=60000);
+			Assert.assertEquals(12, oCar.getTankCapacity());
+			logger.debug(oCar.toString());
+		} catch (Exception e) {
+			//fails
+			logger.debug("Exception Occured: " , e );
+			Assert.fail("Exception Occured: " +  e.toString());
+		}
 
 	}
 }
