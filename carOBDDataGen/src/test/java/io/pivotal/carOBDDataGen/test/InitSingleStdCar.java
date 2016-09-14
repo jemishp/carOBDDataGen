@@ -7,7 +7,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import io.pivotal.carOBDDatGen.car.MakeModelYear;
 import io.pivotal.carOBDDatGen.car.StdCar;
 
 
@@ -27,7 +26,7 @@ public class InitSingleStdCar {
 	@Test
 	public void testInitCar() throws Exception {
 		try {
-			StdCar car = new StdCar("Honda", "Accord EX");
+			StdCar car = new StdCar();
 			Assert.assertEquals("Honda", car.getMake());
 			Assert.assertEquals("Accord EX", car.getModel());
 			Assert.assertEquals(2007, car.getYear());
@@ -43,7 +42,7 @@ public class InitSingleStdCar {
 	@Test
 	public void testParkCar() throws Exception {
 		try{
-			StdCar car = new StdCar("Honda", "Accord EX");
+			StdCar car = new StdCar();
 			car.park();
 			logger.debug((car.toString()));
 			Assert.assertEquals(1,car.getEbrake());
@@ -57,7 +56,7 @@ public class InitSingleStdCar {
 	@Test
 	public void testChangeGear() throws Exception {
 		try {
-			StdCar car = new StdCar("Honda", "Civic");
+			StdCar car = new StdCar();
 			Assert.assertEquals(0,  car.getCurrentGear());
 			Assert.assertEquals(0,  car.getCurrentRpm());
 			car.incrementCurrentGear();
@@ -102,7 +101,7 @@ public class InitSingleStdCar {
 	public void testChangeSpeed() throws Exception {
 		//changing rpms is tested here so no need for a seperate test
 		try {
-			StdCar car = new StdCar("Honda", "Civic EX");
+			StdCar car = new StdCar();
 			Assert.assertEquals(0,  car.getCurrentMileage());
 			Assert.assertEquals(0, car.getCurrentSpeed());
 			//Assumption is when we accelerate we change speed , rpm and mileage
@@ -133,7 +132,7 @@ public class InitSingleStdCar {
 	@Test
 	public void testMaxSpeed() throws Exception {
 		try {
-			StdCar car = new StdCar("Honda", "Civic");
+			StdCar car = new StdCar();
 			car.setCurrentRpm(7);
 			car.setCurrentSpeed(134);
 			car.setCurrentMileage(88000);
@@ -163,7 +162,7 @@ public class InitSingleStdCar {
 		//ChengeSpeed and max Speed already test incrementing Mileage
 		//This case tests that Mileage can not be decremented
 		try {
-			StdCar car = new StdCar("Honda", "Civic");
+			StdCar car = new StdCar();
 			car.setCurrentMileage(10000);
 			car.decrementCurrentMileage();
 			Assert.assertEquals(10000,  car.getCurrentMileage());
@@ -176,7 +175,7 @@ public class InitSingleStdCar {
 	@Test
 	public void testChangeFuel() throws Exception {
 		try {
-			StdCar car = new StdCar("Honda", "Civic");
+			StdCar car = new StdCar();
 			//testing > 8 but less than 12
 			car.setAmountOfFuel(10);
 			car.incrementFuelTank();
@@ -207,10 +206,10 @@ public class InitSingleStdCar {
 	@Test
 	public void testYearInRange() throws Exception {
 		try {
-			StdCar car = new StdCar("Volvo","XC90");
+			StdCar car = new StdCar();
 			Assert.assertTrue(2000 <= car.getYear() && car.getYear() <= 2016);
 			logger.debug(car.toString());
-			StdCar car2 = new StdCar("Volvo","XC90");
+			StdCar car2 = new StdCar();
 			Assert.assertTrue(2000 <= car2.getYear() && car2.getYear() <= 2016);
 			logger.debug(car2.toString());
 		} catch (Exception e) {
@@ -222,9 +221,9 @@ public class InitSingleStdCar {
 	@Test
 	public void testRandomMakeModel() throws Exception {
 		try {
-			StdCar car = new StdCar("Volvo","XC90");
+			StdCar car = new StdCar();
 			logger.debug(car.toString());
-			StdCar car2 = new StdCar("Volvo","XC60");
+			StdCar car2 = new StdCar();
 			logger.debug(car2.toString());
 			Assert.assertNotEquals(car.getMake(), car2.getMake());
 			Assert.assertNotEquals(car.getModel() , car2.getModel());

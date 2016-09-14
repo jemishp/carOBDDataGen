@@ -37,9 +37,10 @@ public class StdCar {
 	private int year;
 	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
-	public StdCar (String make, String model) {
-		this.make = make;
-		this.model = model;
+	public StdCar () {
+		String mModel = getRandomMakeModel();
+		this.make = mModel.substring(0, mModel.indexOf(":"));
+		this.model = mModel.substring(mModel.indexOf(":"));
 		this.year = getRandomYear();
 		this.vin = randomString(17);
 		this.tankCapacity = 16;
@@ -277,8 +278,9 @@ public class StdCar {
 	}
 	
 	public String getRandomMakeModel() {
-		
-		return "test";
+		Random random = new Random();
+		String [] makeModel = {"Honda:Accord","Honda:Civic","Honda:CRV","Mercedes:C250","Mercedes:E400","Mercedes:C200","BMW:328xi","BMW:528i","Volvo:XC90","Volvo:XC60"};
+		return makeModel[random.nextInt()];
 	}
 	
 	public String toString() {
