@@ -272,7 +272,7 @@ public class StdCar {
 	
 	public int getRandomYear(){
 		Random random = new Random();
-		Calendar c = new GregorianCalendar(2000+random.nextInt(16),1,1);
+		Calendar c = new GregorianCalendar(2010+random.nextInt(16),1,1);
 		return c.get(Calendar.YEAR);
 		 
 	}
