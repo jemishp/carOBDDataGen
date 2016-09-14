@@ -1,5 +1,7 @@
 package io.pivotal.carOBDDatGen.car;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 import com.google.gson.Gson;
@@ -265,6 +267,13 @@ public class StdCar {
 		for( int i = 0; i < len; i++ ) 
 			sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
 		return sb.toString();
+	}
+	
+	public int randomYear(){
+		Random random = new Random();
+		Calendar c = new GregorianCalendar(2000+random.nextInt(16),1,1);
+		return year = c.get(Calendar.YEAR);
+		 
 	}
 	
 	public String toString() {
