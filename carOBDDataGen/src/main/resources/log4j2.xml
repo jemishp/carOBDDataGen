@@ -20,15 +20,15 @@
 			<AppenderRef ref="Console" />
 		</Logger>		
 
-		<Logger name="io.pivotal.carOBDDatGen.car" level="INFO">
+		<Logger name="io.pivotal.carOBDDatGen.car" level="DEBUG">
 			<AppenderRef ref="Console" />
 		</Logger>
 		
-		<Logger name="io.pivotal.carOBDDatGen.mover" level="INFO">
+		<Logger name="io.pivotal.carOBDDatGen.mover" level="DEBUG">
 			<AppenderRef ref="Console" />
 		</Logger>
 				
-		<Logger name="io.pivotal.carOBDDatGen.reporter" level="INFO">
+		<Logger name="io.pivotal.carOBDDatGen.reporter" level="DEBUG">
 			<AppenderRef ref="Console" />
 		</Logger>
 		<!-- 3rdparty Loggers -->

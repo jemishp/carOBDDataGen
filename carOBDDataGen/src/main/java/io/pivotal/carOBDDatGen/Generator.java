@@ -23,11 +23,11 @@ public class Generator {
 			StdCar car = new StdCar();
 			carList.add(car);
 		}
+		logger.debug(String.format("Generated List of %d cars",carList.size()));
 		return carList;
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("Starting");
 		logger.info("Starting up Generator");
 		try{
 			carList = genList();

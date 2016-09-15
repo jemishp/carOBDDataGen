@@ -25,7 +25,7 @@ public class CarStatReporter extends Thread{
 			switch(a) {
 				case 1:
 					//Full Report on all cars in list
-					logger.info(String.format("Working on all %d cars in list ", list.size()));
+					logger.info(String.format("Thread Name %s :Working on all %d cars in list ", getName(),list.size()));
 					for (int i =0; i < list.size(); i ++){
 						logger.info(list.get(i).toString());
 					}
@@ -33,7 +33,7 @@ public class CarStatReporter extends Thread{
 				case 2:	
 					//Full Report on first N cars in list
 					int n = rnd.nextInt(list.size());
-					logger.info(String.format("Working on First %d cars in List ", n));
+					logger.info(String.format("Thread Name %s Working on First %d cars in List of size %d ", getName(),n, list.size()));
 					for (int i =0; i < n; i ++){
 						logger.info(list.get(i).toString());
 					}
@@ -41,7 +41,7 @@ public class CarStatReporter extends Thread{
 				case 3:	
 					//Full report on last N cars in list	
 					int n1 = rnd.nextInt(list.size());
-					logger.info(String.format("Working on Last %d cars in List ", n1));
+					logger.info(String.format("Thread Name %s :Working on Last %d cars in List of size %d ", getName(), n1, list.size()));
 					for (int i = n1; i >= 0; i --){
 						logger.info(list.get(i).toString());
 					}
