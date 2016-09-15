@@ -1,4 +1,4 @@
-package io.pivotal.carOBDDataGen.test;
+package io.pivotal.carOBDDatGen.test;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

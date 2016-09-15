@@ -13,7 +13,7 @@
 			<AppenderRef ref="Console" />
 		</Logger>
 
-		<Logger name="io.pivotal.carOBDDataGen.test" level="DEBUG">
+		<Logger name="io.pivotal.carOBDDatGen.test" level="DEBUG">
 			<AppenderRef ref="Console" />
 		</Logger>
 

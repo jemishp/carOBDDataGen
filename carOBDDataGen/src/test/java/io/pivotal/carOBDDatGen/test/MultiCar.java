@@ -1,4 +1,4 @@
-package io.pivotal.carOBDDataGen.test;
+package io.pivotal.carOBDDatGen.test;
 
 import java.util.ArrayList;
 import java.util.List;

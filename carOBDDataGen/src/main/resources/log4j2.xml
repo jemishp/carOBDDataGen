@@ -9,23 +9,26 @@
 	</Appenders>
 	<Loggers>
 		<!-- Application Loggers -->
-		<Logger name="io.pivotal.carOBDDataGen" level="DEBUG">
+		<Root level="debug">
+			<AppenderRef ref="Console" />
+		</Root>
+		<Logger name="io.pivotal.carOBDDatGen" level="DEBUG">
 			<AppenderRef ref="Console" />
 		</Logger>
 		
-		<Logger name="io.pivotal.carOBDDataGen.Generator" level="DEBUG">
+		<Logger name="io.pivotal.carOBDDatGen.Generator" level="DEBUG">
 			<AppenderRef ref="Console" />
 		</Logger>		
 
-		<Logger name="io.pivotal.carOBDDataGen.car" level="INFO">
+		<Logger name="io.pivotal.carOBDDatGen.car" level="INFO">
 			<AppenderRef ref="Console" />
 		</Logger>
 		
-		<Logger name="io.pivotal.carOBDDataGen.mover" level="INFO">
+		<Logger name="io.pivotal.carOBDDatGen.mover" level="INFO">
 			<AppenderRef ref="Console" />
 		</Logger>
 				
-		<Logger name="io.pivotal.carOBDDataGen.reporter" level="INFO">
+		<Logger name="io.pivotal.carOBDDatGen.reporter" level="INFO">
 			<AppenderRef ref="Console" />
 		</Logger>
 		<!-- 3rdparty Loggers -->

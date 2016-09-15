@@ -11,6 +11,7 @@ import io.pivotal.carOBDDatGen.car.StdCar;
 import io.pivotal.carOBDDatGen.mover.MoveCar;
 import io.pivotal.carOBDDatGen.reporter.CarStatReporter;
 
+
 public class Generator {
 	static final Logger logger = LogManager.getLogger(Generator.class);
 	static List<StdCar> carList = new ArrayList<StdCar>() ;
