@@ -36,7 +36,7 @@ public class MultiCar {
 	
 	
 	@Test
-	public void testAccessingCarList() throws Exception {
+	public void canAccessingCarList() throws Exception {
 		try {
 			logger.debug("list Size is: " + carList.size());
 			
@@ -48,7 +48,7 @@ public class MultiCar {
 	}
 	
 	@Test
-	public void testInitCars() throws Exception {
+	public void canInitCars() throws Exception {
 		try {
 			//List<StdCar> carList = new ArrayList<StdCar>() ;
 			Random rnd = new Random();
