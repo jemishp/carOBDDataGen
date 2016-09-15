@@ -84,8 +84,7 @@ public class MultiCar {
 		try {
 			Random rnd = new Random();
 			int a = rnd.nextInt(carList.size());
-			int numCars = a*2;
-			for (int i=0; i < numCars; i++) {
+			for (int i=0; i < a; i++) {
 				logger.debug(i + " " + carList.get(i).getMake());
 				logger.debug(i + " " + carList.get(i).getModel());
 				logger.debug(i + " " + carList.get(i).getVin());

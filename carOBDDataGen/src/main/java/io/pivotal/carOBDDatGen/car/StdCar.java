@@ -4,8 +4,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
-import org.junit.Assert;
-
 import com.google.gson.Gson;
 
 public class StdCar {
@@ -290,7 +288,7 @@ public class StdCar {
 	
 	public int takeRandomAction() {
 		Random rnd = new Random();
-		int randAction = rnd.nextInt(8);
+		int randAction = rnd.nextInt(10);
 		switch (randAction) {
 		case 0:
 			//Park
@@ -324,6 +322,18 @@ public class StdCar {
 			//Increment Fuel
 			this.incrementFuelTank();
 			break;			
+		case 8:
+			//Cruising along highway while maintaining speed and rpm
+			if (this.getCurrentSpeed() >= 42) {
+				this.incrementCurrentMileage();	
+			}
+			break;
+		case 9:
+			//Cruising along inner city while maintaining speed and rpm
+			if (this.getCurrentSpeed() <= 42) {
+				this.incrementCurrentMileage();	
+			}
+			break;	
 		}
 		return randAction;
 	}
