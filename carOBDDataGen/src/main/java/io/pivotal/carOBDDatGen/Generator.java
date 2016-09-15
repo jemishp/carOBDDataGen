@@ -10,15 +10,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import io.pivotal.carOBDDatGen.car.StdCar;
 import io.pivotal.carOBDDatGen.mover.MoveCar;
 import io.pivotal.carOBDDatGen.reporter.CarStatReporter;
 
 
-@Controller
+@RestController
 @ComponentScan
 @RequestMapping(value="/")
 public class Generator {
