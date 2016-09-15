@@ -35,7 +35,7 @@ public class Generator {
 				MoveCar m = new MoveCar("MoveCar-"+i);
 				m.start();
 				m.run(carList);
-				logger.debug("Started Thread: " + m.getName()+ " and is in state " + m.getState());
+				logger.debug(String.format("Started Thread: %s and is in state %s " , m.getName(), m.getState()));
 			}
 			CarStatReporter reporter = new CarStatReporter("Reporter-1");
 			reporter.start();

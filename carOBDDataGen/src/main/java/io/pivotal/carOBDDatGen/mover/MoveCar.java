@@ -31,34 +31,34 @@ public class MoveCar extends Thread{
 		try {
 			Random rnd = new Random();
 			int a = rnd.nextInt(1+3);
-			logger.info("Thread Name: %s%n", getName());
+			logger.info(String.format("Thread Name: %s", getName()));
 			
 			switch(a) {
 				case 1:
 					//Take random actions on all cars in list
-					logger.info("Working on all %d cars in list %n", list.size());
+					logger.info(String.format("Working on all %d cars in list", list.size()));
 					for (int i =0; i < list.size(); i ++){
 						int actionTaken=list.get(i).takeRandomAction();
-						logger.debug("Action Taken on car %s : %d %n", list.get(i).getVin(), actionTaken);
+						logger.debug(String.format("Action Taken on car %s : %d", list.get(i).getVin(), actionTaken));
 					}
 					break;
 				case 2:	
 					//Take Random actions on first N cars in list
 					int n = rnd.nextInt(list.size());
-					logger.info("Working on First %d cars in List %n", n);
+					logger.info(String.format("Working on First %d cars in List ", n));
 					for (int i =0; i < n; i ++){
 						int actionTaken=list.get(i).takeRandomAction();
-						logger.debug("Action Taken on car %s : %d %n", list.get(i).getVin(), actionTaken);
+						logger.debug(String.format("Action Taken on car %s : %d ", list.get(i).getVin(), actionTaken));
 					}
 					break;
 				case 3:	
 					//take random actions on last N cars in list
 					
 					int n1 = rnd.nextInt(list.size());
-					logger.info("Working on Last %d cars in List %n", n1);
+					logger.info(String.format("Working on Last %d cars in List ", n1));
 					for (int i = n1; i >= 0; i --){
 						int actionTaken=list.get(i).takeRandomAction();
-						logger.debug("Action Taken on car %s : %d %n", list.get(i).getVin(), actionTaken);
+						logger.debug(String.format("Action Taken on car %s : %d", list.get(i).getVin(), actionTaken));
 					}
 					break;
 			}
