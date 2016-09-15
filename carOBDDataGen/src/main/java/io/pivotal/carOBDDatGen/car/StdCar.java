@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
+import org.junit.Assert;
+
 import com.google.gson.Gson;
 
 public class StdCar {
@@ -281,6 +283,38 @@ public class StdCar {
 		Random random = new Random();
 		String [] makeModel = {"Honda:Accord","Honda:Civic","Honda:CRV","Mercedes:C250","Mercedes:E400","Mercedes:C200","BMW:328xi","BMW:528i","Volvo:XC90","Volvo:XC60"};
 		return makeModel[random.nextInt(makeModel.length)];
+	}
+	
+	public void takeRandomAction() {
+		Random rnd = new Random();
+		int randAction = rnd.nextInt(6);
+		switch (randAction) {
+		case 0:
+			//Park
+			this.park();
+			break;
+		case 1:
+			//Accelerate
+			this.accelerate();
+			break;
+		case 2:
+			//Decelerate 
+			this.decelerate();
+			break;
+		case 3:
+			//Change Gears Up
+			this.incrementCurrentGear();
+			break;
+		case 4:
+			//Change Gears Down
+			this.decrementCurrentGear();
+			break;
+		case 5:
+			//Put in Reverse
+			this.putInReverse();
+			break;
+		}
+		
 	}
 	
 	public String toString() {
