@@ -39,13 +39,16 @@ public class StdCar {
 	private int year;
 	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
+	
 	public StdCar () {
+		Random rnd = new Random();
 		String mModel = getRandomMakeModel();
 		this.make = mModel.substring(0, mModel.indexOf(":"));
 		this.model = mModel.substring(mModel.indexOf(":"));
 		this.year = getRandomYear();
 		this.vin = randomString(17);
 		this.tankCapacity = 16;
+		this.amountOfFuel = rnd.nextInt(1+tankCapacity);
 	}
 
 	public int getAmountOfFuel() {
@@ -285,9 +288,9 @@ public class StdCar {
 		return makeModel[random.nextInt(makeModel.length)];
 	}
 	
-	public void takeRandomAction() {
+	public int takeRandomAction() {
 		Random rnd = new Random();
-		int randAction = rnd.nextInt(6);
+		int randAction = rnd.nextInt(8);
 		switch (randAction) {
 		case 0:
 			//Park
@@ -313,8 +316,16 @@ public class StdCar {
 			//Put in Reverse
 			this.putInReverse();
 			break;
+		case 6:
+			//Decrement Fuel
+			this.decrementFuelTank();
+			break;			
+		case 7:
+			//Increment Fuel
+			this.incrementFuelTank();
+			break;			
 		}
-		
+		return randAction;
 	}
 	
 	public String toString() {

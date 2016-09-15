@@ -152,5 +152,22 @@ public class MultiCar {
 			Assert.fail("Exception Occured: " +  e.toString());			
 		}
 	}
+	
+	@Test
+	public void canTakeRandomActionsOnMultipleCarsRandomly() throws Exception {
+		try {
+			Random rnd = new Random();
+			int a = rnd.nextInt(carList.size());
+			for (int i=0; i < a; i++) {
+				int actionTaken = carList.get(i).takeRandomAction();
+				Assert.assertTrue("Took an incorrect Action " + actionTaken, actionTaken >=0 && actionTaken <=7 );
+			}
+			
+		} catch (Exception e) {
+			//fails
+			logger.debug("Exception Occured: " , e );
+			Assert.fail("Exception Occured: " +  e.toString());			
+		}
+	}
 
 }
