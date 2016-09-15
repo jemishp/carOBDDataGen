@@ -23,7 +23,7 @@ sourceCompatibility = 1.7
 version = '1.0'
 jar {
 	manifest {
-		attributes 'Implementation-Title': 'OBD Data Generator', 'Implementation-Version': version, 'Main-Class': 'io.pivotal.carOBDDataGen.car'
+		attributes 'Implementation-Title': 'OBD Data Generator', 'Implementation-Version': version, 'Main-Class': 'io.pivotal.carOBDDataGen.Generator'
 	}
 }
 
