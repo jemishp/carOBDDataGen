@@ -9,7 +9,10 @@
 	</Appenders>
 	<Loggers>
 		<!-- Application Loggers -->
-		<Logger name="io.pivotal.carOBDDataGen" level="DEBUG">
+		<Root level="debug">
+			<AppenderRef ref="Console" />
+		</Root>		
+		<Logger name="io.pivotal.carOBDDatGen" level="DEBUG">
 			<AppenderRef ref="Console" />
 		</Logger>
 
