@@ -12,23 +12,23 @@
 		<Root level="debug">
 			<AppenderRef ref="Console" />
 		</Root>
-		<Logger name="io.pivotal.carOBDDatGen" level="DEBUG">
+		<Logger name="io.pivotal.carOBDDatGen" level="DEBUG" additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
 		
-		<Logger name="io.pivotal.carOBDDatGen.Generator" level="DEBUG">
+		<Logger name="io.pivotal.carOBDDatGen.Generator" level="DEBUG" additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>		
 
-		<Logger name="io.pivotal.carOBDDatGen.car" level="DEBUG">
+		<Logger name="io.pivotal.carOBDDatGen.car" level="DEBUG" additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
 		
-		<Logger name="io.pivotal.carOBDDatGen.mover" level="DEBUG">
+		<Logger name="io.pivotal.carOBDDatGen.mover" level="DEBUG" additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
 				
-		<Logger name="io.pivotal.carOBDDatGen.reporter" level="DEBUG">
+		<Logger name="io.pivotal.carOBDDatGen.reporter" level="DEBUG" additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
 		<!-- 3rdparty Loggers -->
