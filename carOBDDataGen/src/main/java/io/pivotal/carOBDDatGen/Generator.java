@@ -6,12 +6,16 @@ import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import io.pivotal.carOBDDatGen.car.StdCar;
 import io.pivotal.carOBDDatGen.mover.MoveCar;
 import io.pivotal.carOBDDatGen.reporter.CarStatReporter;
 
+@RestController
 
+@RequestMapping("/")
 public class Generator {
 	static final Logger logger = LogManager.getLogger(Generator.class);
 	static List<StdCar> carList = new ArrayList<StdCar>() ;
@@ -27,7 +31,7 @@ public class Generator {
 		return carList;
 	}
 	
-	public static void main(String[] args) {
+	public static void runGen() {
 		logger.info("Starting up Generator");
 		try{
 			carList = genList();
@@ -46,5 +50,19 @@ public class Generator {
 			logger.debug("Exception Occured: " , e );
 		}
 		
+	}
+	
+	@RequestMapping("/greeting")
+	public String greeting() {
+		logger.debug(String.format("%s is Alive", getClass().getName()));
+		return "Generator is Alive";
+	}
+	
+	@RequestMapping("/gen")
+	public String gen() {
+		String test = "test";
+		logger.debug(String.format("gen Called %s", test));
+		runGen();
+		return "Generator Completed";
 	}
 }
