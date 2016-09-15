@@ -4,19 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.ServletContext;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import io.pivotal.carOBDDatGen.car.StdCar;
 import io.pivotal.carOBDDatGen.mover.MoveCar;
 import io.pivotal.carOBDDatGen.reporter.CarStatReporter;
 
-@RestController
 
-@RequestMapping("/")
+@Controller
+@ComponentScan
+@RequestMapping(value="/")
 public class Generator {
+	@Autowired
+	ServletContext context;
 	static final Logger logger = LogManager.getLogger(Generator.class);
 	static List<StdCar> carList = new ArrayList<StdCar>() ;
 	
@@ -52,13 +59,13 @@ public class Generator {
 		
 	}
 	
-	@RequestMapping("/greeting")
+	@RequestMapping(value="/greeting")
 	public String greeting() {
 		logger.debug(String.format("%s is Alive", getClass().getName()));
 		return "Generator is Alive";
 	}
 	
-	@RequestMapping("/gen")
+	@RequestMapping(value="/gen")
 	public String gen() {
 		String test = "test";
 		logger.debug(String.format("gen Called %s", test));
