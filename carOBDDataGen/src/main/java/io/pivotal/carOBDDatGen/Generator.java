@@ -13,9 +13,9 @@ import io.pivotal.carOBDDatGen.reporter.CarStatReporter;
 
 public class Generator {
 	static final Logger logger = LogManager.getLogger(Generator.class);
-	List<StdCar> carList = new ArrayList<StdCar>() ;
+	static List<StdCar> carList = new ArrayList<StdCar>() ;
 	
-	public List<StdCar> genList() {
+	public static List<StdCar> genList() {
 		Random rnd = new Random();
 		int a = rnd.nextInt(100);
 		for (int i=0; i<a; i++) {
@@ -25,7 +25,8 @@ public class Generator {
 		return carList;
 	}
 	
-	public void main(String[] args) {
+	public static void main(String[] args) {
+		System.out.println("Starting");
 		logger.info("Starting up Generator");
 		try{
 			carList = genList();

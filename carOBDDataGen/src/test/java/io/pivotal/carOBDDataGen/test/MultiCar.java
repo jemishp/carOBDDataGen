@@ -83,6 +83,10 @@ public class MultiCar {
 	public void canTakeActionOnMultipleCars() throws Exception {
 		try {
 			Random rnd = new Random();
+			if (carList.size()==0) {
+				StdCar car = new StdCar();
+				carList.add(car);
+			}
 			int a = rnd.nextInt(carList.size());
 			for (int i=0; i < a; i++) {
 				logger.debug(i + " " + carList.get(i).getMake());
@@ -127,8 +131,10 @@ public class MultiCar {
 				case 2:
 					//Decelerate 
 					Assert.assertEquals(curSpeed,carList.get(i).getCurrentSpeed());
-					carList.get(i).decelerate();
-					Assert.assertEquals(curSpeed-1,carList.get(i).getCurrentSpeed());
+					if (curSpeed>0) {
+						carList.get(i).decelerate();
+						Assert.assertEquals(curSpeed-1,carList.get(i).getCurrentSpeed());
+					}
 					break;
 				case 3:
 					//Change Gears
@@ -159,7 +165,7 @@ public class MultiCar {
 			int a = rnd.nextInt(carList.size());
 			for (int i=0; i < a; i++) {
 				int actionTaken = carList.get(i).takeRandomAction();
-				Assert.assertTrue("Took an incorrect Action " + actionTaken, actionTaken >=0 && actionTaken <=7 );
+				Assert.assertTrue("Took an incorrect Action " + actionTaken, actionTaken >=0 && actionTaken <=9 );
 			}
 			
 		} catch (Exception e) {

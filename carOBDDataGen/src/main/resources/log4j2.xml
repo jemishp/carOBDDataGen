@@ -12,11 +12,22 @@
 		<Logger name="io.pivotal.carOBDDataGen" level="DEBUG">
 			<AppenderRef ref="Console" />
 		</Logger>
+		
+		<Logger name="io.pivotal.carOBDDataGen.Generator" level="DEBUG">
+			<AppenderRef ref="Console" />
+		</Logger>		
 
 		<Logger name="io.pivotal.carOBDDataGen.car" level="INFO">
 			<AppenderRef ref="Console" />
 		</Logger>
-
+		
+		<Logger name="io.pivotal.carOBDDataGen.mover" level="INFO">
+			<AppenderRef ref="Console" />
+		</Logger>
+				
+		<Logger name="io.pivotal.carOBDDataGen.reporter" level="INFO">
+			<AppenderRef ref="Console" />
+		</Logger>
 		<!-- 3rdparty Loggers -->
 		<Logger name="org.springframework.core" level="INFO">
 			<AppenderRef ref="Console" />

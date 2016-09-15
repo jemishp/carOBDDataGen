@@ -235,9 +235,18 @@ public class InitSingleStdCar {
 			StdCar car2 = new StdCar();
 			logger.debug(car2.toString());
 			if (car2.getMake().equals(car.getMake())){
+				if (car2.getModel().equals(car.getModel())) {
+					Assert.assertNotEquals(car2.getVin(), car.getVin());
+				} else {
 				Assert.assertNotEquals(car.getModel() , car2.getModel());
+				}
 			} else if (car2.getModel().equals(car.getModel())) {
-				Assert.assertNotEquals(car.getMake(), car2.getMake());			
+				if (car2.getMake().equals(car.getMake())) {
+					Assert.assertNotEquals(car2.getVin(), car.getVin());
+				} else {
+					Assert.assertNotEquals(car.getMake(), car2.getMake());	
+				}
+							
 			} else {
 				Assert.assertNotEquals(car.getMake(), car2.getMake());
 				Assert.assertNotEquals(car.getModel() , car2.getModel());
