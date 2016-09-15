@@ -24,7 +24,7 @@ public class InitSingleStdCar {
 	}
 	
 	@Test
-	public void testInitCar() throws Exception {
+	public void canInitCar() throws Exception {
 		try {
 			StdCar car = new StdCar();
 			Assert.assertNotNull(car.getMake());
@@ -42,7 +42,7 @@ public class InitSingleStdCar {
 	}
 	
 	@Test
-	public void testParkCar() throws Exception {
+	public void canParkCar() throws Exception {
 		try{
 			StdCar car = new StdCar();
 			car.park();
@@ -57,7 +57,7 @@ public class InitSingleStdCar {
 	}
 	
 	@Test
-	public void testChangeGear() throws Exception {
+	public void canChangeGear() throws Exception {
 		try {
 			StdCar car = new StdCar();
 			Assert.assertEquals(0,  car.getCurrentGear());
@@ -102,7 +102,7 @@ public class InitSingleStdCar {
 	}	
 	
 	@Test
-	public void testChangeSpeed() throws Exception {
+	public void canChangeSpeed() throws Exception {
 		//changing rpms is tested here so no need for a seperate test
 		try {
 			StdCar car = new StdCar();
@@ -135,7 +135,7 @@ public class InitSingleStdCar {
 		}
 
 	@Test
-	public void testMaxSpeed() throws Exception {
+	public void canGetMaxSpeed() throws Exception {
 		try {
 			StdCar car = new StdCar();
 			car.setCurrentRpm(7);
@@ -164,7 +164,7 @@ public class InitSingleStdCar {
 	
 	
 	@Test
-	public void testDecrementMileage() throws Exception {
+	public void canNotDecrementMileage() throws Exception {
 		//ChengeSpeed and max Speed already test incrementing Mileage
 		//This case tests that Mileage can not be decremented
 		try {
@@ -180,7 +180,7 @@ public class InitSingleStdCar {
 		} 
 	
 	@Test
-	public void testChangeFuel() throws Exception {
+	public void canChangeFuel() throws Exception {
 		try {
 			StdCar car = new StdCar();
 			//testing > 8 but less than 12
@@ -212,7 +212,7 @@ public class InitSingleStdCar {
 		}
 	
 	@Test
-	public void testYearInRange() throws Exception {
+	public void checkYearInRange() throws Exception {
 		try {
 			StdCar car = new StdCar();
 			Assert.assertTrue(2010 <= car.getYear() && car.getYear() <= 2016);
@@ -228,7 +228,7 @@ public class InitSingleStdCar {
 	}
 	
 	@Test
-	public void testRandomMakeModel() throws Exception {
+	public void canGetRandomMakeModel() throws Exception {
 		try {
 			StdCar car = new StdCar();
 			logger.debug(car.toString());

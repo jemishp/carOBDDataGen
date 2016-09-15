@@ -15,16 +15,16 @@ public class InitSingleOldCar {
 	
 	@Before
 	public void setup() throws Exception {
-		logger.debug("Starting up test");
+		//logger.debug("Starting up test");
 	}
 	
 	@After
 	public void tearDown() throws Exception {
-		logger.debug("Completed Single Car tests");
+		//logger.debug("Completed Single Car tests");
 	}
 	
 	@Test
-	public void testInitOldCar() throws Exception {
+	public void canInitOldCar() throws Exception {
 		try {
 			OldCar oCar = new OldCar();
 			logger.debug(oCar.toString());
