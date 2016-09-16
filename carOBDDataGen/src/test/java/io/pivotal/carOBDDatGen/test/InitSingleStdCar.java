@@ -125,7 +125,12 @@ public class InitSingleStdCar {
 			Assert.assertEquals(36,  car.getCurrentSpeed());
 			Assert.assertEquals(5, car.getCurrentRpm());
 			Assert.assertEquals(4,  car.getCurrentMileage());
-			
+			// testing to check RPM does not go below 1 when decelerating
+			for (int i=0; i < 10; i++ ) {
+				logger.debug(car.getCurrentRpm());
+				car.decelerate();
+				Assert.assertTrue("Rpm cannot be 0 or less " + car.getCurrentRpm(), car.getCurrentRpm() >=1);
+			}
 			
 		}catch (Exception e) {
 			//fails

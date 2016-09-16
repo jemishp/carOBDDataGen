@@ -258,10 +258,11 @@ public class StdCar {
 	}
 	
 	public void decelerate(){
-		if (currentSpeed > 0 && currentRpm > 1 )
-			currentSpeed--;
-			currentRpm--;
-			currentMileage++;
+		if (this.currentSpeed > 0 && this.currentRpm >= 1 ) {
+			this.currentSpeed--;
+			this.currentRpm--;
+			this.currentMileage++;
+		}
 	}
 	
 	public String randomString( int len ) 
