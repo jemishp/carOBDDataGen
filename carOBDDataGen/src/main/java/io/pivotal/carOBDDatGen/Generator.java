@@ -26,6 +26,7 @@ public class Generator {
 	ServletContext context;
 	static final Logger logger = LogManager.getLogger(Generator.class);
 	static List<StdCar> carList = new ArrayList<StdCar>() ;
+	static String uri;
 	
 	public static List<StdCar> genList() {
 		Random rnd = new Random();
@@ -41,6 +42,12 @@ public class Generator {
 	public static void runGen() {
 		logger.info("Starting up Generator");
 		try{
+			uri = System.getenv("POST-URI");
+			if (uri == null) {
+				uri = "http://localhost:9000";
+				logger.debug(String.format("No POST-URI Specified. Using %s instead", uri));
+			}
+			logger.debug(String.format("Received POST-URI: %s ", uri));
 			carList = genList();
 			for (int i=1; i<=5; i++){
 				MoveCar m = new MoveCar("MoveCar-"+i);
@@ -48,7 +55,7 @@ public class Generator {
 				m.run(carList);
 				logger.debug(String.format("Started Thread: %s and is in state %s " , m.getName(), m.getState()));
 			}
-			CarStatReporter reporter = new CarStatReporter("Reporter-1","http://10.65.96.2:9000");
+			CarStatReporter reporter = new CarStatReporter("Reporter-1", uri);
 			reporter.start();
 			reporter.run(carList);
 			
