@@ -48,7 +48,7 @@ public class Generator {
 				m.run(carList);
 				logger.debug(String.format("Started Thread: %s and is in state %s " , m.getName(), m.getState()));
 			}
-			CarStatReporter reporter = new CarStatReporter("Reporter-1");
+			CarStatReporter reporter = new CarStatReporter("Reporter-1","https://10.68.92.100:8080");
 			reporter.start();
 			reporter.run(carList);
 			
