@@ -12,7 +12,7 @@
 		<Root level="debug">
 			<AppenderRef ref="Console" />
 		</Root>		
-		<Logger name="io.pivotal.carOBDDatGen" level="DEBUG">
+<!-- 		<Logger name="io.pivotal.carOBDDatGen" level="DEBUG">
 			<AppenderRef ref="Console" />
 		</Logger>
 
@@ -20,7 +20,7 @@
 			<AppenderRef ref="Console" />
 		</Logger>
 
-		<!-- 3rdparty Loggers -->
+		3rdparty Loggers
 		<Logger name="org.springframework.core" level="INFO">
 			<AppenderRef ref="Console" />
 		</Logger>
@@ -35,11 +35,7 @@
 
 		<Logger name="org.springframework.web" level="INFO">
 			<AppenderRef ref="Console" />
-		</Logger>
-		<Root level="error">
-			<AppenderRef ref="Console" />
-		</Root>
-
+		</Logger> -->
 	</Loggers>
 
 

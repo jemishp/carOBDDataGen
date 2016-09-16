@@ -36,7 +36,7 @@ public class MultiCar {
 	
 	
 	@Test
-	public void canAccessingCarList() throws Exception {
+	public void canAccessCarList() throws Exception {
 		try {
 			logger.debug("list Size is: " + carList.size());
 			
