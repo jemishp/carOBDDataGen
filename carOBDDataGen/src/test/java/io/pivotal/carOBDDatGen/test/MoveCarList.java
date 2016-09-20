@@ -35,13 +35,37 @@ public class MoveCarList {
 	}
 	
 	@Test
-	public void canRun5MoveCarThreads() {
+	public void canStartStop5MoveCarThreads() {
 		try{
-			for (int i=1; i<=5; i++){
-				MoveCar m = new MoveCar("MoveCar-"+i);
-				m.start();
-				m.run(carList);
-				logger.debug("Started Thread: " + m.getName()+ " and is in state " + m.getState());
+			final List<MoveCar> m = new ArrayList<MoveCar>();
+			for (int i=0; i<5; i++){
+				m.add(new MoveCar("MoveCar-"+i, true));
+				m.get(i).start();
+				//m.run(carList);
+				logger.debug("Started Thread: " + m.get(i).getName()+ " and is in state " + m.get(i).getState());				
+			}
+			logger.debug("Start Moving Cars in List");
+			for (int a = 0; a < m.size(); a++) {
+				final int i=a;
+				Thread t = new Thread(new Runnable() {
+					@Override
+					public void run() {
+							//m.get(i).start();
+							m.get(i).run(carList);
+							logger.debug("Started: " + m.get(i).getName() + " move =" + m.get(i).getMove());
+							System.out.println("Started: " + m.get(i).getName());
+						
+
+					}
+				});
+				t.start();
+			}
+			Thread.sleep(20000);
+			logger.debug("Thread " + Thread.currentThread().getName() + " Sleeping");
+			logger.debug("Interrupting Now");
+			for (int a=0; a<5; a++) {
+				m.get(a).move=false;
+				logger.debug("Interrupted: " + m.get(a).getName());
 			}
 			
 		}catch (Exception e) {
