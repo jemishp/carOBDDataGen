@@ -27,7 +27,8 @@ public class Generator {
 	static final Logger logger = LogManager.getLogger(Generator.class);
 	static List<StdCar> carList = new ArrayList<StdCar>() ;
 	static String uri;
-	final List<MoveCar> m = new ArrayList<MoveCar>();
+	static List<MoveCar> m = new ArrayList<MoveCar>();
+	static List<CarStatReporter> r = new ArrayList<CarStatReporter>();
 	
 	public static List<StdCar> genList() {
 		Random rnd = new Random();
@@ -42,6 +43,8 @@ public class Generator {
 	
 	public static void runGen() {
 		logger.info("Starting up Generator");
+		m.clear();
+		r.clear();
 		try{
 			uri = System.getenv("POST-URI");
 			if (uri == null) {
@@ -51,11 +54,16 @@ public class Generator {
 			logger.debug(String.format("Received POST-URI: %s ", uri));
 			carList = genList();
 			
-			final List<MoveCar> m = new ArrayList<MoveCar>();
+			
 			for (int i=0; i<5; i++){
 				m.add(new MoveCar("MoveCar-"+i, true));
 				m.get(i).start();
 				logger.debug(String.format("Started Thread: %s and is in state %s ", m.get(i).getName(), m.get(i).getState()));				
+			}
+			for (int i=0; i <2; i ++) {
+				r.add(new CarStatReporter("Reporter-"+i, uri, true));
+				r.get(i).start();
+				logger.debug(String.format("Started Thread: %s and is in state %s ", r.get(i).getName(), r.get(i).getState()));
 			}
 			logger.debug("Start Moving Cars in List");
 			for (int a = 0; a < m.size(); a++) {
@@ -65,29 +73,23 @@ public class Generator {
 					public void run() {
 							//m.get(i).start();
 							m.get(i).run(carList);
-							logger.debug("Started: " + m.get(i).getName() + " move =" + m.get(i).getMove());
+							logger.info(String.format("Stopped: %s move=%s and is in state %s " , m.get(i).getName(), m.get(i).getMove(), m.get(i).getState()));
 					}
 				});
 				t.start();
 			}
-			Thread reporter = new Thread(new Runnable() {
-				@Override
-				public void run() {
-					CarStatReporter carReporter = new CarStatReporter("Reporter-1", uri, true);
-					carReporter.start();
-					carReporter.run(carList);
-				}
-			});
-			reporter.start();
-/*			CarStatReporter reporter = new CarStatReporter("Reporter-1", uri, true);
-			reporter.start();
-			reporter.run(carList);			
-			for (int i=1; i<=5; i++){
-				MoveCar m = new MoveCar("MoveCar-"+i,true);
-				m.start();
-				m.run(carList);
-				logger.debug(String.format("Started Thread: %s and is in state %s " , m.getName(), m.getState()));
-			}*/
+			for (int z=0; z< r.size();z++) {
+				final int b=z;
+				Thread reporter = new Thread(new Runnable() {
+					@Override
+					public void run() {
+						r.get(b).run(carList);
+						logger.info(String.format("Stopped: %s report=%s and is in state %s " , r.get(b).getName(), r.get(b).getReport(), r.get(b).getState()));
+					}
+				});
+				reporter.start();				
+			}
+
 
 			
 		}catch (Exception e) {
@@ -115,21 +117,15 @@ public class Generator {
 	public String stopGen() {
 		logger.debug("stopGen Called ");
 		for (int a=0; a<m.size(); a++) {
-			//m.get(a).requestStop();
-			m.get(a).move=false;
-			logger.debug("Interrupted: " + m.get(a).getName());
+			m.get(a).requestStop();
+			//m.get(a).move=false;
+			logger.debug(String.format("Interrupted: %s " , m.get(a).getName()));
 		}
-		Thread [] tarray = new Thread[Thread.activeCount()];
-		Thread.enumerate(tarray);
-		if (tarray.length >= 0 ) {
-			for (int i=0; i< tarray.length; i++) {
-				if (tarray[i].getName().equalsIgnoreCase("Reporter-1")) {
-					((CarStatReporter) tarray[i]).requestStop();
-				}
-			}			
+		for (int b=0;b<r.size();b++) {
+			r.get(b).requestStop();
+			logger.debug(String.format("Interrupted:  %s ", r.get(b).getName()));
 		}
 
-		
 		return "Generator Stopped";
 	}
 }

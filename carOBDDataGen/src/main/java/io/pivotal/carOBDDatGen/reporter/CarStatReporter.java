@@ -6,6 +6,7 @@ import java.util.Random;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.HttpHostConnectException;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.logging.log4j.LogManager;
@@ -17,16 +18,25 @@ public class CarStatReporter extends Thread{
 
 	static final Logger logger = LogManager.getLogger(CarStatReporter.class);
 	static String uri;
-	boolean report;
+	public boolean report;
 	
 	public CarStatReporter(String s, String uri, boolean report) {
 		super(s);
 		this.uri=uri;
-		this.report=report;
+		this.setReport(report);
 	}
 	
+	public boolean getReport() {
+		return report;
+	}
+
+	public void setReport(boolean report) {
+		this.report = report;
+	}
+
 	public void sendReport(StdCar c, String uri) {
 		try {
+			this.sleep(1000);
 			HttpClient httpClient = new DefaultHttpClient();
 			HttpPost request = new HttpPost(uri);
 			StringEntity strTemp = new StringEntity(c.toString());
@@ -35,6 +45,9 @@ public class CarStatReporter extends Thread{
 			logger.info(String.format("Sending: %s", strTemp));
 			HttpResponse response = httpClient.execute(request);
 			logger.info(String.format("Response: %s", response));			
+		} catch (HttpHostConnectException e) {
+			logger.debug(String.format("Could not connect to SCDF Host:  %s",uri) ,e );
+			throw new RuntimeException(String.format("Could not connect to SCDF Host:  %s",uri),e);
 		} catch (Exception e) {
 			logger.debug("Exception Occured: " , e);
 		}
@@ -80,8 +93,13 @@ public class CarStatReporter extends Thread{
 					break;
 				}
 			}
+
+		} catch (InterruptedException e) {
+			logger.debug(String.format("Thread %s was interrupted!", this.getName()));
+			//return;
+			throw new RuntimeException(String.format("Thread %s was interrupted!", this.getName()), e);
 			
-		} catch (Exception e) {
+		}catch (Exception e) {
 			logger.debug("Exception Occured: " , e);
 		}
 	}
