@@ -78,6 +78,7 @@ public class Generator {
 					carReporter.run(carList);
 				}
 			});
+			reporter.start();
 /*			CarStatReporter reporter = new CarStatReporter("Reporter-1", uri, true);
 			reporter.start();
 			reporter.run(carList);			
@@ -113,7 +114,7 @@ public class Generator {
 	@RequestMapping(value="/stopGen")
 	public String stopGen() {
 		logger.debug("stopGen Called ");
-		for (int a=0; a<5; a++) {
+		for (int a=0; a<m.size(); a++) {
 			//m.get(a).requestStop();
 			m.get(a).move=false;
 			logger.debug("Interrupted: " + m.get(a).getName());
