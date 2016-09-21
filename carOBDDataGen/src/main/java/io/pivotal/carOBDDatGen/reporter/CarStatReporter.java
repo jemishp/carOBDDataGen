@@ -45,10 +45,12 @@ public class CarStatReporter extends Thread{
 			Random rnd = new Random();
 			logger.info(String.format("Thread Name: %s ", getName()));
 			while (report) {
+				Thread.sleep(1000);
 				int a = rnd.nextInt(1+3);
 				switch (a) {
 				case 1:
 					//Full Report on all cars in list
+					Thread.sleep(1000);
 					logger.info(
 							String.format("Thread Name %s :Working on all %d cars in list ", getName(), list.size()));
 					for (int i = 0; i < list.size(); i++) {
@@ -57,6 +59,7 @@ public class CarStatReporter extends Thread{
 					break;
 				case 2:
 					//Full Report on first N cars in list
+					Thread.sleep(1000);
 					int n = rnd.nextInt(1 + list.size());
 					logger.info(String.format("Thread Name %s Working on First %d cars in List of size %d ", getName(),
 							n, list.size()));
@@ -65,8 +68,10 @@ public class CarStatReporter extends Thread{
 					}
 					break;
 				case 3:
-					//Full report on last N cars in list	
+					//Full report on last N cars in list
+					Thread.sleep(1000);
 					int n1 = rnd.nextInt(1 + list.size());
+					if (n1 == list.size()) { n1=n1-1;}
 					logger.info(String.format("Thread Name %s :Working on Last %d cars in List of size %d ", getName(),
 							n1, list.size()));
 					for (int i = n1; i >= 0; i--) {

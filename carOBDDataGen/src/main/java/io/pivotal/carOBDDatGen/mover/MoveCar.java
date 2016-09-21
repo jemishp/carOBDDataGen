@@ -34,8 +34,8 @@ public class MoveCar extends Thread{
 		try {
 			Random rnd = new Random();
 			logger.info(String.format("Thread Name: %s", getName()));
-			Thread.sleep(1000);
 			while (move) {
+				Thread.sleep(1000);
 				int a = rnd.nextInt(1+3);
 				switch (a) {
 				case 1:

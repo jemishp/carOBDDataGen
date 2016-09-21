@@ -114,7 +114,8 @@ public class Generator {
 	public String stopGen() {
 		logger.debug("stopGen Called ");
 		for (int a=0; a<5; a++) {
-			m.get(a).requestStop();
+			//m.get(a).requestStop();
+			m.get(a).move=false;
 			logger.debug("Interrupted: " + m.get(a).getName());
 		}
 		Thread [] tarray = new Thread[Thread.activeCount()];
