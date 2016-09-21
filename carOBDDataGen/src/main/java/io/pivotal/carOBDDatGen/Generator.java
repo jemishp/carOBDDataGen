@@ -45,19 +45,48 @@ public class Generator {
 			uri = System.getenv("POST-URI");
 			if (uri == null) {
 				uri = "http://localhost:9000";
-				logger.debug(String.format("No POST-URI Specified. Using %s instead", uri));
+				logger.warn(String.format("No POST-URI Specified. Using %s instead", uri));
 			}
 			logger.debug(String.format("Received POST-URI: %s ", uri));
 			carList = genList();
+			
+			final List<MoveCar> m = new ArrayList<MoveCar>();
+			for (int i=0; i<5; i++){
+				m.add(new MoveCar("MoveCar-"+i, true));
+				m.get(i).start();
+				logger.debug(String.format("Started Thread: %s and is in state %s ", m.get(i).getName(), m.get(i).getState()));				
+			}
+			logger.debug("Start Moving Cars in List");
+			for (int a = 0; a < m.size(); a++) {
+				final int i=a;
+				Thread t = new Thread(new Runnable() {
+					@Override
+					public void run() {
+							//m.get(i).start();
+							m.get(i).run(carList);
+							logger.debug("Started: " + m.get(i).getName() + " move =" + m.get(i).getMove());
+					}
+				});
+				t.start();
+			}
+			Thread reporter = new Thread(new Runnable() {
+				@Override
+				public void run() {
+					CarStatReporter carReporter = new CarStatReporter("Reporter-1", uri, true);
+					carReporter.start();
+					carReporter.run(carList);
+				}
+			});
+/*			CarStatReporter reporter = new CarStatReporter("Reporter-1", uri, true);
+			reporter.start();
+			reporter.run(carList);			
 			for (int i=1; i<=5; i++){
-				MoveCar m = new MoveCar("MoveCar-"+i);
+				MoveCar m = new MoveCar("MoveCar-"+i,true);
 				m.start();
 				m.run(carList);
 				logger.debug(String.format("Started Thread: %s and is in state %s " , m.getName(), m.getState()));
-			}
-			CarStatReporter reporter = new CarStatReporter("Reporter-1", uri);
-			reporter.start();
-			reporter.run(carList);
+			}*/
+
 			
 		}catch (Exception e) {
 			//fails
