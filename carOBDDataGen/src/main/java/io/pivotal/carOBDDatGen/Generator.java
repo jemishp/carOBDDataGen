@@ -27,6 +27,7 @@ public class Generator {
 	static final Logger logger = LogManager.getLogger(Generator.class);
 	static List<StdCar> carList = new ArrayList<StdCar>() ;
 	static String uri;
+	final List<MoveCar> m = new ArrayList<MoveCar>();
 	
 	public static List<StdCar> genList() {
 		Random rnd = new Random();
@@ -107,5 +108,26 @@ public class Generator {
 		logger.debug(String.format("gen Called %s", test));
 		runGen();
 		return "Generator Completed";
+	}
+	
+	@RequestMapping(value="/stopGen")
+	public String stopGen() {
+		logger.debug("stopGen Called ");
+		for (int a=0; a<5; a++) {
+			m.get(a).requestStop();
+			logger.debug("Interrupted: " + m.get(a).getName());
+		}
+		Thread [] tarray = new Thread[Thread.activeCount()];
+		Thread.enumerate(tarray);
+		if (tarray.length >= 0 ) {
+			for (int i=0; i< tarray.length; i++) {
+				if (tarray[i].getName().equalsIgnoreCase("Reporter-1")) {
+					((CarStatReporter) tarray[i]).requestStop();
+				}
+			}			
+		}
+
+		
+		return "Generator Stopped";
 	}
 }
