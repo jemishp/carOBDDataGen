@@ -42,7 +42,7 @@ public class StdCar {
 		Random rnd = new Random();
 		String mModel = getRandomMakeModel();
 		this.make = mModel.substring(0, mModel.indexOf(":"));
-		this.model = mModel.substring(mModel.indexOf(":"));
+		this.model = mModel.substring(mModel.indexOf(":")+1);
 		this.year = getRandomYear();
 		this.vin = randomString(17);
 		this.tankCapacity = 16;
