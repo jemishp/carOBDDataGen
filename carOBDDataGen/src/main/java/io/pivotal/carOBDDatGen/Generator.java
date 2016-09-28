@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.pivotal.carOBDDatGen.car.OldCar;
 import io.pivotal.carOBDDatGen.car.StdCar;
 import io.pivotal.carOBDDatGen.mover.MoveCar;
 import io.pivotal.carOBDDatGen.reporter.CarStatReporter;
@@ -36,6 +37,10 @@ public class Generator {
 		for (int i=0; i<a; i++) {
 			StdCar car = new StdCar();
 			carList.add(car);
+		}
+		for (int i=0; i<a/2; i++) {
+			OldCar ocar = new OldCar();
+			carList.add(ocar);
 		}
 		logger.debug(String.format("Generated List of %d cars",carList.size()));
 		return carList;
