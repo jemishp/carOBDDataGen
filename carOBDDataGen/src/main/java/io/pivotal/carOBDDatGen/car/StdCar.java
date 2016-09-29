@@ -47,6 +47,8 @@ public class StdCar {
 		this.vin = randomString(17);
 		this.tankCapacity = 16;
 		this.amountOfFuel = rnd.nextInt(1+tankCapacity);
+		this.setCurrentMileage(275+rnd.nextInt(5000));
+		this.setCurrentSpeed(7+rnd.nextInt(35));
 	}
 
 	public int getAmountOfFuel() {
