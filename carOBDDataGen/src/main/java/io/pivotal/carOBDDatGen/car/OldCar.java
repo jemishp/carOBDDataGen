@@ -11,6 +11,7 @@ public class OldCar extends StdCar {
 		Random random = new Random();
 		this.setCurrentMileage(60000+random.nextInt(25000));
 		this.setTankCapacity(12);
+		this.setEngTemp(random.nextFloat() * (220 - 199) + 199);
 	}
 	
 	@Override
