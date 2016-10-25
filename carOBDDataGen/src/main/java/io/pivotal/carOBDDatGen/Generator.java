@@ -110,7 +110,7 @@ public class Generator {
 		return "Generator is Alive";
 	}
 	
-	@RequestMapping(value="/gen")
+	@RequestMapping(value="/startgen")
 	public String gen() {
 		String test = "test";
 		logger.debug(String.format("gen Called %s", test));
@@ -118,7 +118,7 @@ public class Generator {
 		return "Generator Completed";
 	}
 	
-	@RequestMapping(value="/stopGen")
+	@RequestMapping(value="/stopgen")
 	public String stopGen() {
 		logger.debug("stopGen Called ");
 		for (int a=0; a<m.size(); a++) {
