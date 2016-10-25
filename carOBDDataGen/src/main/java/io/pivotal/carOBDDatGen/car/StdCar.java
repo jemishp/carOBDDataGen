@@ -50,6 +50,10 @@ public class StdCar {
 		this.setCurrentMileage(275+rnd.nextInt(5000));
 		this.setCurrentSpeed(7+rnd.nextInt(35));
 		this.setEngTemp(rnd.nextFloat() * (220 - 195) + 195);
+		this.setFrontLeftPsi(rnd.nextFloat() * (40 - 35) + 35);
+		this.setFrontRightPsi(rnd.nextFloat() * (40 - 35) + 35);
+		this.setRearLeftPsi(rnd.nextFloat() * (38 - 35) + 35);
+		this.setRearRightPsi(rnd.nextFloat() * (38 - 35) + 35);
 	}
 
 	public int getAmountOfFuel() {
