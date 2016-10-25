@@ -233,7 +233,7 @@ public class StdCar {
 	}
 	
 	public void decrementCurrentGear() {
-		if ( this.currentGear > 0)
+		if ( this.currentGear > 0 && this.currentGear <= 5)
 			this.currentGear--;	
 	}
 	
