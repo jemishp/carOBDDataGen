@@ -65,7 +65,7 @@ public class Generator {
 				m.get(i).start();
 				logger.debug(String.format("Started Thread: %s and is in state %s ", m.get(i).getName(), m.get(i).getState()));				
 			}
-			for (int i=0; i <2; i ++) {
+			for (int i=0; i <5; i ++) {
 				r.add(new CarStatReporter("Reporter-"+i, uri, true));
 				r.get(i).start();
 				logger.debug(String.format("Started Thread: %s and is in state %s ", r.get(i).getName(), r.get(i).getState()));
