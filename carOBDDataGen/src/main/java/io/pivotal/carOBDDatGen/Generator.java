@@ -33,12 +33,12 @@ public class Generator {
 	
 	public static List<StdCar> genList() {
 		Random rnd = new Random();
-		int a = rnd.nextInt(100);
+		int a = rnd.nextInt(1000);
 		for (int i=0; i<a; i++) {
 			StdCar car = new StdCar();
 			carList.add(car);
 		}
-		for (int i=0; i<a/2; i++) {
+		for (int i=0; i<(a*100/25); i++) {
 			OldCar ocar = new OldCar();
 			carList.add(ocar);
 		}
