@@ -49,6 +49,7 @@ public class StdCar {
 		this.amountOfFuel = rnd.nextInt(1+tankCapacity);
 		this.setCurrentMileage(275+rnd.nextInt(5000));
 		this.setCurrentSpeed(7+rnd.nextInt(35));
+		this.setEngTemp(rnd.nextFloat() * (220 - 195) + 195);
 	}
 
 	public int getAmountOfFuel() {
@@ -238,6 +239,8 @@ public class StdCar {
 	
 	public void putInReverse() {
 		this.currentGear = 10;
+		this.currentSpeed = 2;
+		this.currentRpm = 1;
 	}
 	
 	public void getOutOfReverse() {
@@ -248,6 +251,7 @@ public class StdCar {
 	public void park() {
 		this.currentGear = 0;
 		this.eBrake = 1;
+		this.engTemp = 0;
 	}
 	
 	public void accelerate() {
@@ -255,16 +259,18 @@ public class StdCar {
 			this.currentSpeed++;
 		    this.currentRpm++;
 		    this.currentMileage++;
-		} else if ( this.currentSpeed == 135 || this.currentRpm == 8)
+		    this.engTemp++;
+		} else if ( this.currentSpeed == 135 || this.currentRpm == 8 || this.engTemp == 220)
 			this.currentMileage++;
 	}
 	
 	public void decelerate(){
-		if (this.currentSpeed > 0 && this.currentRpm > 1 ) {
+		if (this.currentSpeed > 0 && this.currentRpm > 1 && this.engTemp > 195) {
 			this.currentSpeed--;
 			this.currentRpm--;
 			this.currentMileage++;
-		} else if ( this.currentSpeed > 0 && this.currentRpm == 1) {
+			this.engTemp--;
+		} else if ( this.currentSpeed > 0 && this.currentRpm == 1 || this.engTemp == 195) {
 			this.currentSpeed--;
 			this.currentMileage++;
 		}
