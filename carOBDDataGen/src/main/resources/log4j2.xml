@@ -24,11 +24,11 @@
 			<AppenderRef ref="Console" />
 		</Logger>
 		
-		<Logger name="io.pivotal.carOBDDatGen.mover" level="DEBUG" additivity="false">
+		<Logger name="io.pivotal.carOBDDatGen.mover" level="INFO" additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
 				
-		<Logger name="io.pivotal.carOBDDatGen.reporter" level="DEBUG" additivity="false">
+		<Logger name="io.pivotal.carOBDDatGen.reporter" level="INFO" additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
 		<!-- 3rdparty Loggers -->
