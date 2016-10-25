@@ -36,7 +36,7 @@ public class CarStatReporter extends Thread{
 
 	public void sendReport(StdCar c, String uri) {
 		try {
-			this.sleep(1000);
+			Thread.sleep(1000);
 			HttpClient httpClient = new DefaultHttpClient();
 			HttpPost request = new HttpPost(uri);
 			StringEntity strTemp = new StringEntity(c.toString());
