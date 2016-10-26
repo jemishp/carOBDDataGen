@@ -46,10 +46,10 @@ public class CarStatReporter extends Thread{
 			HttpResponse response = httpClient.execute(request);
 			logger.info(String.format("Response: %s", response));			
 		} catch (HttpHostConnectException e) {
-			logger.debug(String.format("Could not connect to SCDF Host:  %s",uri) ,e );
+			logger.warn(String.format("Could not connect to SCDF Host:  %s",uri) ,e );
 			throw new RuntimeException(String.format("Could not connect to SCDF Host:  %s",uri),e);
 		} catch (Exception e) {
-			logger.debug("Exception Occured: " , e);
+			logger.warn("Exception Occured: " , e);
 		}
 	}
 	
