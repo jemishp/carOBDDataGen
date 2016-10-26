@@ -28,7 +28,7 @@
 			<AppenderRef ref="Console" />
 		</Logger>
 				
-		<Logger name="io.pivotal.carOBDDatGen.reporter" level="INFO" additivity="false">
+		<Logger name="io.pivotal.carOBDDatGen.reporter" level="DEBUG" additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
 		<!-- 3rdparty Loggers -->

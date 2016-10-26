@@ -38,7 +38,7 @@ public class Generator {
 			StdCar car = new StdCar();
 			carList.add(car);
 		}
-		for (int i=0; i<(a*100/25); i++) {
+		for (int i=0; i<(25/100)*a; i++) {
 			OldCar ocar = new OldCar();
 			carList.add(ocar);
 		}
