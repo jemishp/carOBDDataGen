@@ -298,7 +298,11 @@ public class StdCar {
 	
 	public String getRandomMakeModel() {
 		Random random = new Random();
-		String [] makeModel = {"Honda:Accord","Honda:Civic","Honda:CRV","Mercedes:C250","Mercedes:E400","Mercedes:C200","BMW:328xi","BMW:528i","Volvo:XC90","Volvo:XC60"};
+		String [] makeModel = {"Honda:Accord","Honda:Civic","Honda:CRV",
+				"Mercedes:C250","Mercedes:E400","Mercedes:S500","BMW:328xi",
+				"BMW:528i","Volvo:XC90","Volvo:XC60","GMC:Yukon",
+				"Toyota:Highlander","Toyota:Camry",
+				"Dodge:Durango", "Ford:Mustang"};
 		return makeModel[random.nextInt(makeModel.length)];
 	}
 	
