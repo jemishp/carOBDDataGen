@@ -42,7 +42,7 @@ public class CarStatReporter extends Thread{
 			StringEntity strTemp = new StringEntity(c.toString());
 			request.setEntity(strTemp);
 			request.setHeader("Content-Type", "application/json");
-			logger.info(String.format("Sending: %s", strTemp.getContent().toString()));
+			logger.info(String.format("Sending: %s", c));
 			HttpResponse response = httpClient.execute(request);
 			logger.info(String.format("Response: %s", response));			
 		} catch (HttpHostConnectException e) {
